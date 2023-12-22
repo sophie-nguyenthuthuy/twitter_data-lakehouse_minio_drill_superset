@@ -80,8 +80,7 @@ services:
       - .env
 
   scheduler:
-    <<: *common
-    <<: *depends-on
+    <<: [*common, *depends-on]
     container_name: airflow-scheduler
     command: scheduler
     restart: on-failure
@@ -89,8 +88,7 @@ services:
       - "8793:8793"
 
   webserver:
-    <<: *common
-    <<: *depends-on
+    <<: [*common, *depends-on]
     container_name: airflow-webserver
     restart: always
     command: webserver
